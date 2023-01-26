@@ -16,13 +16,19 @@ function startGame() {
     const contracts = genContracts(locations);
     updateStatus('generating contracts...');
     saveContracts(contracts);
+    updateStatus('loading create character...', true);
     setTimeout(() => {
-        // window.location = '/pages/playerCreation.html';
+        window.location = '/pages/playerCreation.html';
     }, 2500);
 }
 
-function updateStatus(msg) {
-    status.innerText += `\n${msg}`;
+function updateStatus(msg, clear) {
+    if (clear) {
+        status.innerText = '';
+        status.innerText = msg;
+    } else {
+        status.innerText += `\n${msg}`;
+    }
 }
 
 
