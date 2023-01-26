@@ -12,5 +12,9 @@ export function createLocations() {
 }
 
 export function saveLocations(locations) {
-    localStorage.setItem('locations', locations);
+    localStorage.setItem('locations', JSON.stringify(locations));
+}
+
+export function loadLocations() {
+    return JSON.parse(localStorage.getItem('locations'));
 }

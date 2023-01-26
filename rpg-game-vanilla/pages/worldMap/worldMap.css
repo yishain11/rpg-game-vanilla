@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background-image: url('/assets/worldMap/ocean.jpg');
+}
+
+main {
+    margin: auto;
+    width: 80%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: 1fr 5fr;
+    grid-template-areas:
+        "header header"
+        "map buttons"
+    ;
+}
+
+h1 {
+    grid-area: header;
+    text-align: center;
+}
+
+img {
+    border: 1rem solid rgb(172, 94, 49);
+    border-radius: 15px;
+}
+
+section#buttons {
+    grid-area: buttons;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5rem;
+}
