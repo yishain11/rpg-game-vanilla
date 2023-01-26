@@ -1,6 +1,6 @@
-const colors = ['black', 'green', 'yellow', 'red', 'blue'];
+const colors = ['black', 'green', 'yellow', 'red', 'blue', 'gold', 'silver', 'purple', 'pink'];
 const elements = ['fire', 'water', 'electric', 'magma', 'acid', 'mountain'];
-const monsters = ['dragon', 'vampire', 'goblin', 'hobgoblin', 'giant'];
+const monsters = ['dragon', 'vampire', 'goblin', 'hobgoblin', 'giant', 'syren', 'kraken', 'shark', 'blob', 'slime', 'tiger', 'bear'];
 
 export function createMonster() {
     const monster = {
@@ -10,7 +10,7 @@ export function createMonster() {
         defense: randNum(1, 10),
         health: randNum(50, 100),
         dexterity: randNum(1, 10),
-        xpResults: randNum(100, 1000),
+        xpResults: randNum(100, 800),
         goldReward: randNum(10, 50),
         level: randNum(1, 4)
     };
@@ -33,7 +33,7 @@ function genName() {
 }
 
 function getRandValue(arr) {
-    const index = Math.floor(Math.random() * arr.length - 1);
+    const index = Math.floor(Math.random() * (arr.length - 1));
     const res = arr[index];
     return res;
 }
