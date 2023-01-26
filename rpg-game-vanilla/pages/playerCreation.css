@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+    background-image: url('/assets/bgc-player-creation.png');
+}
+
+main {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    gap: 10px;
+}
+
+h1 {
+    font-size: 10vh;
+    margin: auto;
+    color: wheat;
+}
+
+section#statsForm form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(126, 126, 126);
+    align-items: stretch;
+    font-size: 5vh;
+    height: 500px;
+}
+
+section#statsForm form p {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+input {
+    font-size: 5vh;
+    width: 50%;
+}
+
+button {
+    font-size: 5vh;
+    background-color: beige;
+}
+
+section#playerImage {
+    height: 50%;
+}

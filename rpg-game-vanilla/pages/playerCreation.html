@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="playerCreation.css">
+    <script src="playerCreation.js" defer></script>
+    <title>Player Creation</title>
+</head>
+
+<body>
+    <h1>Player Creation</h1>
+    <main>
+        <section id="statsForm">
+            <form action="">
+                <p>
+                    <label for="name">Player Name</label>
+                    <input type="text" name="name">
+                </p>
+                <p>
+                    <label for="strength">Strength</label>
+                    <input name="strength" type="number" min="0" max="10">
+                </p>
+                <p>
+                    <label for="defense">defense</label>
+                    <input name="defense" type="number" min="0" max="10">
+                </p>
+                <p>
+                    <label for="dex">Dexterity</label>
+                    <input name="dexterity" type="number" min="0" max="10">
+                </p>
+            </form>
+            <button>Create Player</button>
+        </section>
+        <section id="playerImage">
+            <img src="/assets/fighter1.png" alt="player image" width="400" height="400">
+        </section>
+
+    </main>
+</body>
+
+</html>
