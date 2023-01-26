@@ -18,7 +18,7 @@ function startGame() {
     saveContracts(contracts);
     updateStatus('loading create character...', true);
     setTimeout(() => {
-        window.location = '/pages/playerCreation.html';
+        window.location = '/pages/playerCreation/playerCreation.html';
     }, 2500);
 }
 
