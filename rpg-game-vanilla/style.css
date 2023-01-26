@@ -20,5 +20,16 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 5rem
+  gap: 5rem;
+  background-color: green;
+}
+
+#status {
+  background-color: red;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  margin: auto;
 }

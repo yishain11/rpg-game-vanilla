@@ -10,3 +10,7 @@ export function createLocations() {
     });
     return locations;
 }
+
+export function saveLocations(locations) {
+    localStorage.setItem('locations', locations);
+}
