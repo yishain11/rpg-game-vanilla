@@ -34,7 +34,7 @@ function getPlayerValues() {
     playerStats.potions = 1;
     playerStats.level = 1;
     playerStats.xp = 0;
-    playerStats.image = img.src;
+    playerStats.image = getImagePlayer(currentImageIndex);
     savePlayerStats(playerStats);
     footer.innerText = 'Player created';
 }
