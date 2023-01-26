@@ -6,7 +6,6 @@
 html, body {
     height: 100%;
     width: 100%;
-    overflow-y: hidden;
     background-image: url('/assets/bgc-player-creation.png');
 }
 
@@ -14,7 +13,7 @@ main {
     display: flex;
     width: 100%;
     justify-content: center;
-    height: 100%;
+    height: 70%;
     align-items: center;
     gap: 10px;
 }
@@ -55,4 +54,21 @@ button {
 
 section#playerImage {
     height: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    font-size: 7vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: blanchedalmond;
+    background-color: green;
+    height: 20%;
+}
+
+#btns {
+    display: flex;
+    justify-content: space-around;
 }

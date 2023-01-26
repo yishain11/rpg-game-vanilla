@@ -1,14 +1,9 @@
 export function updatePlayerStats(newStats) {
-    const currentPlayer = localStorage.getItem('player');
-    for (const stat in newStats) {
-        if (Object.hasOwnProperty.call(newStats, stat)) {
-            const statsValue = newStats[stat];
-            currentPlayer[stat] = statsValue;
-        }
-    }
-    localStorage.setItem(currentPlayer);
+    let currentPlayer = JSON.parse(localStorage.getItem('player'));
+    currentPlayer = { ...currentPlayer, ...newStats };
+    return currentPlayer;
 }
 
 export function savePlayerStats(player) {
-    localStorage.setItem(player);
+    localStorage.setItem('player', JSON.stringify(player));
 }
