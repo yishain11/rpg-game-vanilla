@@ -1,5 +1,5 @@
-import { savePlayerStats } from '../modules/player.mjs'
-import { getImagePlayer, images } from '../modules/images.mjs'
+import { savePlayerStats } from '../../modules/player.mjs';
+import { getImagePlayer, images } from '../../modules/images.mjs'
 
 let currentImageIndex = 0;
 const img = document.getElementsByTagName('img')[0];
@@ -37,6 +37,9 @@ function getPlayerValues() {
     playerStats.image = getImagePlayer(currentImageIndex);
     savePlayerStats(playerStats);
     footer.innerText = 'Player created';
+    setTimeout(() => {
+        window.location = '/pages/worldMap/worldMap.html';
+    }, 2500);
 }
 
 
