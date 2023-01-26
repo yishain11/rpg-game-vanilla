@@ -1,7 +1,7 @@
 export function updatePlayerStats(newStats) {
     let currentPlayer = JSON.parse(localStorage.getItem('player'));
     currentPlayer = { ...currentPlayer, ...newStats };
-    localStorage.setItem(currentPlayer);
+    return currentPlayer;
 }
 
 export function savePlayerStats(player) {

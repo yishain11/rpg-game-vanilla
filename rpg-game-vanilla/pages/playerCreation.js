@@ -1,7 +1,6 @@
 import { savePlayerStats } from '../modules/player.mjs'
-import setImage from '../modules/playerImages.mjs'
+import { getImagePlayer, images } from '../modules/images.mjs'
 
-const images = ['fighter1.png', 'archer1.png', 'fighter2.png', 'wizard1.png'];
 let currentImageIndex = 0;
 const img = document.getElementsByTagName('img')[0];
 const createBtn = document.getElementsByTagName('button')[0];
@@ -15,7 +14,7 @@ updateBtnsState();
 updateImage(currentImageIndex);
 
 function updateImage(index) {
-    img.src = `/assets/${images[index]}`;
+    img.src = getImagePlayer(index);
 }
 
 function getPlayerValues() {
@@ -35,6 +34,7 @@ function getPlayerValues() {
     playerStats.potions = 1;
     playerStats.level = 1;
     playerStats.xp = 0;
+    playerStats.image = img.src;
     savePlayerStats(playerStats);
     footer.innerText = 'Player created';
 }
