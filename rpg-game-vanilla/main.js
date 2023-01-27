@@ -1,8 +1,11 @@
 import { createLocations, saveLocations } from "./modules/locations.mjs";
 import { genContracts, saveContracts } from "./modules/contracts.mjs";
+import { genHeader } from "./components/header.mjs";
 
 const btn = document.getElementById('btn');
 const status = document.getElementById('status');
+const headerContainer = document.getElementById('header');
+headerContainer.append(genHeader());
 
 btn.addEventListener('click', startGame);
 
