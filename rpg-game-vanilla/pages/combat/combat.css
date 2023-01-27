@@ -6,9 +6,6 @@
 html, body {
     height: 100%;
     width: 100%;
-}
-
-body {
     background-image: url('/assets/combat/desert.png');
     background-size: cover;
     display: flex;
@@ -25,7 +22,7 @@ header {
 
 main {
     width: 60%;
-    height: 60%;
+    height: 100%;
     background-color: yellow;
     display: grid;
     gap: 1rem;
@@ -35,6 +32,13 @@ main {
         "monsterImg playerImg"
         "buttons stats"
     ;
+}
+
+#log {
+    grid-area: monsterImg;
+    background-color: red;
+    width: 100%;
+    height: 100%;
 }
 
 #monsterImage {

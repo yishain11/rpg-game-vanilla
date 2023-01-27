@@ -1,24 +1,67 @@
+import { singleCombatRound, selectStarter } from '../../modules/combat.mjs';
+import { savePlayerStats } from "../../modules/player.mjs";
+import { saveMonsterStats } from "../../modules/monsters.mjs";
+import { config } from "../../modules/config.mjs";
+
 const player = JSON.parse(localStorage.getItem('player'));
+console.log('player', player);
 const monster = JSON.parse(localStorage.getItem('currentMonster'));
 
 const statsContainer = document.getElementById('stats');
 const playerImage = document.getElementById('playerImage');
 const monsterImage = document.getElementById('monsterImage');
 
-startCombat();
+const attackBtn = document.getElementById('attack');
+const runBtn = document.getElementById('run');
+const potionBtn = document.getElementById('potion');
 
-function startCombat() {
+
+let currentAttacker;
+let isCombat = true;
+
+loadCombatPage();
+
+function loadCombatPage() {
     initialStats();
     loadImages(player);
     loadImages(monster);
+    setActionButtons();
+    startCombat();
 }
 
+function startCombat() { }
 
+function attack() {
+    if (isCombat) {
+        if (!currentAttacker) {
+            currentAttacker = selectStarter();
+        }
+        statsContainer.innerText = `Current attacker: ${currentAttacker}`;
+
+    }
+}
+
+function run() {
+    window.location = '/pages/worldMap/worldMap.html';
+}
+
+function drinkPotion() {
+    if (parseInt(player.potions < 1)) {
+        potionBtn.disable = true;
+    } else {
+        player.potions -= 1;
+        player.lfe += config.lifeReturnByPotion;
+    }
+}
+
+function setActionButtons() {
+    attackBtn.addEventListener('click', attack);
+    runBtn.addEventListener('click', run);
+    potionBtn.addEventListener('click', drinkPotion);
+}
 
 function loadImages(character) {
-    console.log('character', character);
     const img = document.createElement('img');
-    console.log('character.images', character.images);
     img.src = character.image;
     img.setAttribute('width', '80%');
     img.setAttribute('height', '80%');

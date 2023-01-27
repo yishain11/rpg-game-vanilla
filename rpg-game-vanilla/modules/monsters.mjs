@@ -42,3 +42,7 @@ function getRandValue(arr) {
     const res = arr[index];
     return res;
 }
+
+export function saveMonsterStats(monster) {
+    localStorage.setItem('currentMonster', JSON.stringify(monster));
+}
