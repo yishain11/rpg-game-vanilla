@@ -1,6 +1,9 @@
+import { genHeader } from '../../components/header.mjs';
 import { loadLocations } from "../../modules/locations.mjs";
 const locations = loadLocations();
 const locationBtnContainer = document.getElementById('buttons');
+const headerContainer = document.getElementById('container');
+headerContainer.append(genHeader())
 
 function genButtons() {
     locations.forEach(location => {
@@ -13,7 +16,7 @@ function genButtons() {
 }
 
 locationBtnContainer.addEventListener('click', (e) => {
-    window.location = `/pages/locationContrats.html?location=${e.target.innerText}`;
+    window.location = `/pages/location/location.html?location=${e.target.innerText}`;
 });
 
 genButtons();

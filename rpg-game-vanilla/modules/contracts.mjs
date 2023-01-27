@@ -13,6 +13,7 @@ export function genContracts(locations) {
             };
             contract.gold = contract.monster.goldReward;
             contract.xp = contract.monster.xpResults;
+            contract.level = contract.monster.level;
             contracts[location].contracts.push(contract);
         }
     });
@@ -20,6 +21,13 @@ export function genContracts(locations) {
 }
 
 export function saveContracts(contracts) {
-    console.log('contracts', contracts);
     localStorage.setItem('contracts', JSON.stringify(contracts));
+}
+
+export function loadContracts(location) {
+    const contracts = JSON.parse(localStorage.getItem('contracts'));
+    if (location) {
+        return contracts[location];
+    }
+    return contracts;
 }
