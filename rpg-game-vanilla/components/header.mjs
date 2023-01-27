@@ -21,6 +21,7 @@ function styleA(a, link) {
         a.setAttribute('href', `/pages/${link}/${link}.html`);
     }
     a.style.marginLeft = '5rem';
+    a.style.fontSize = '2rem';
     return a;
 }
 
