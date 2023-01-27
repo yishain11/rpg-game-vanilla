@@ -35,3 +35,10 @@ main {
 img {
     margin: auto;
 }
+
+h1#pageTitle {
+    font-size: 10vh;
+    margin: auto;
+    text-align: center;
+    color: darkred;
+}
