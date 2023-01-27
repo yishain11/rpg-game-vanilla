@@ -1,12 +1,12 @@
 import { singleCombatRound, selectStarter } from '../../modules/combat.mjs';
 import { savePlayerStats } from "../../modules/player.mjs";
 import { saveMonsterStats } from "../../modules/monsters.mjs";
+import { getContracts, removeMonsterFromContract, saveContracts } from "../../modules/contracts.mjs";
 import { config } from "../../modules/config.mjs";
 
 const player = JSON.parse(localStorage.getItem('player'));
-console.log('player', player);
 const monster = JSON.parse(localStorage.getItem('currentMonster'));
-
+const statusContainer = document.getElementById('status');
 const statsContainer = document.getElementById('stats');
 const playerImage = document.getElementById('playerImage');
 const monsterImage = document.getElementById('monsterImage');
@@ -29,15 +29,32 @@ function loadCombatPage() {
     startCombat();
 }
 
-function startCombat() { }
+function startCombat() {
+    currentAttacker = selectStarter(player.dexterity, monster.dexterity);
+    statusContainer.innerText = `Current attacker: ${currentAttacker}`;
+}
 
 function attack() {
     if (isCombat) {
-        if (!currentAttacker) {
-            currentAttacker = selectStarter();
+        [player, monster] = singleCombatRound(player, monster);
+        if (monster.life <= 0) {
+            statusContainer.innerText = 'Player Won!';
+            player.xp += monster.xpReward;
+            player.gold += monster.goldReward;
+            monster.isAlive = false;
+            // remove monster from contracts
+            let contracts = getContracts();
+            const currentLocation = localStorage.getItem('currentLocation');
+            contracts = removeMonsterFromContract(contracts, currentLocation, monster.name);
+            saveContracts(contracts);
+        } else {
+            // change monster life in UI
         }
-        statsContainer.innerText = `Current attacker: ${currentAttacker}`;
-
+        // after attack - change attacker
+        currentAttacker = 'monster';
+        statusContainer.innerText = `Current attacker: ${currentAttacker}`;
+        [monster, player] = singleCombatRound(monster, player)
+        // change players life in UI
     }
 }
 

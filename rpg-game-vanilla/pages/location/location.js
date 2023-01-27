@@ -10,6 +10,8 @@ const main = document.getElementsByTagName('main')[0];
 const header = document.getElementsByTagName('header')[0];
 const actions = document.getElementById('actions');
 
+localStorage.setItem('currentLocation', locationName)
+
 updateTitles();
 header.append(genHeader());
 

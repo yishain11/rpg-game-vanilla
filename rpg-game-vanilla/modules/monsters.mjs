@@ -13,7 +13,8 @@ export function createMonster() {
         xpReward: randNum(100, 800),
         goldReward: randNum(10, 50),
         level: randNum(1, 4),
-        image: genImage()
+        image: genImage(),
+        isAlive: true
     };
     return monster;
 }
