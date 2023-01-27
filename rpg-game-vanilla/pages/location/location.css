@@ -42,3 +42,15 @@ h1#pageTitle {
     text-align: center;
     color: darkred;
 }
+
+body section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 5rem;
+    height: 7vh;
+}
+
+body section button {
+    font-size: 5vh;
+}

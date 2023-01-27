@@ -13,6 +13,7 @@ export function genContracts(locations) {
             };
             contract.gold = contract.monster.goldReward;
             contract.xp = contract.monster.xpResults;
+            contract.level = contract.monster.level;
             contracts[location].contracts.push(contract);
         }
     });

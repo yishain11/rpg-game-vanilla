@@ -11,14 +11,9 @@ btn.addEventListener('click', startGame);
 
 
 function startGame() {
-    updateStatus('starting game...');
-    updateStatus('creating locations...');
     const locations = createLocations();
-    console.log('locations', locations)
     saveLocations(locations);
-    updateStatus('generating monsters...');
     const contracts = genContracts(locations);
-    updateStatus('generating contracts...');
     saveContracts(contracts);
     updateStatus('loading create character...', true);
     setTimeout(() => {

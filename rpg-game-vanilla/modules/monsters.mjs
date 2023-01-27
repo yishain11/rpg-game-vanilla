@@ -23,7 +23,7 @@ function randNum(min, max) {
 
 function genName() {
     let desc = '';
-    if (Math.random() < 5) {
+    if (Math.random() < .5) {
         desc = getRandValue(colors);
     } else {
         desc = getRandValue(elements);
