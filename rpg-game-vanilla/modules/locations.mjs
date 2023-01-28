@@ -1,5 +1,5 @@
 const descriptions = ['the dark', 'the scary', 'the wild', 'the amazing'];
-const locationNames = ['Mim', 'Valo', 'Farkwad', 'Shandir'];
+const locationNames = ['Mim', 'Valo', 'Farkwad', 'Shandir', 'Bolgo', 'winter run', 'red keep'];
 export function createLocations() {
     const locations = [];
     descriptions.forEach(desc => {

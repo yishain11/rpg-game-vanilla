@@ -21,10 +21,10 @@ export function genContracts(locations) {
 }
 
 export function removeMonsterFromContract(contracts, location, monsterName) {
-    console.log('contracts', contracts)
-    contracts[location] = contracts[location].contracts.filter((contract) => {
-        return contract.name !== monsterName;
+    contracts[location].contracts = contracts[location].contracts.filter((contract) => {
+        return contract.monster.name !== monsterName;
     });
+    return contracts;
 }
 
 export function saveContracts(contracts) {
