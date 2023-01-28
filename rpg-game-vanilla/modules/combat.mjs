@@ -1,6 +1,8 @@
 export function singleCombatRound(attackerStats, defenderStats) {
     const damage = attack(attackerStats, defenderStats);
-    defenderStats.life -= damage;
+    if (damage) {
+        defenderStats.life -= damage;
+    }
     return [attackerStats, defenderStats];
 }
 
@@ -12,7 +14,11 @@ export function selectStarter(playerDex, MonsterDex) {
 
 function attack(attackerStats, defenderStats) {
     const roll = rollD20();
-    const damage = ((attackerStats.strength + roll) * attackerStats.level) - (defenderStats.defense);
+    console.log('attacker rolled', roll);
+    console.log('attackerStats.strength', attackerStats.strength);
+    console.log('attackerStats.level', attackerStats.level);
+    const damage = ((parseInt(attackerStats.strength) + roll) * attackerStats.level) - (defenderStats.defense);
+    console.log('attacker did damage', damage)
     if (damage > 0) {
         return damage;
     }

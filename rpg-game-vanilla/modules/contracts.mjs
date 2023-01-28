@@ -21,6 +21,7 @@ export function genContracts(locations) {
 }
 
 export function removeMonsterFromContract(contracts, location, monsterName) {
+    console.log('contracts', contracts)
     contracts[location] = contracts[location].contracts.filter((contract) => {
         return contract.name !== monsterName;
     });
@@ -39,5 +40,5 @@ export function loadContracts(location) {
 }
 
 export function getContracts() {
-    return localStorage.getItem('contracts');
+    return JSON.parse(localStorage.getItem('contracts'));
 }

@@ -4,8 +4,8 @@ import { saveMonsterStats } from "../../modules/monsters.mjs";
 import { getContracts, removeMonsterFromContract, saveContracts } from "../../modules/contracts.mjs";
 import { config } from "../../modules/config.mjs";
 
-const player = JSON.parse(localStorage.getItem('player'));
-const monster = JSON.parse(localStorage.getItem('currentMonster'));
+let player = JSON.parse(localStorage.getItem('player'));
+let monster = JSON.parse(localStorage.getItem('currentMonster'));
 const statusContainer = document.getElementById('status');
 const statsContainer = document.getElementById('stats');
 const playerImage = document.getElementById('playerImage');
@@ -15,7 +15,7 @@ const attackBtn = document.getElementById('attack');
 const runBtn = document.getElementById('run');
 const potionBtn = document.getElementById('potion');
 
-
+let contracts = getContracts();
 let currentAttacker;
 let isCombat = true;
 
@@ -36,6 +36,7 @@ function startCombat() {
 
 function attack() {
     if (isCombat) {
+        console.log('player is attacking');
         [player, monster] = singleCombatRound(player, monster);
         if (monster.life <= 0) {
             statusContainer.innerText = 'Player Won!';
@@ -43,18 +44,22 @@ function attack() {
             player.gold += monster.goldReward;
             monster.isAlive = false;
             // remove monster from contracts
-            let contracts = getContracts();
             const currentLocation = localStorage.getItem('currentLocation');
             contracts = removeMonsterFromContract(contracts, currentLocation, monster.name);
             saveContracts(contracts);
         } else {
             // change monster life in UI
+            const monsterLife = document.getElementById('monsterLife');
+            monsterLife.innerText = `Life: ${monster.life}`
         }
         // after attack - change attacker
+        console.log('monster is attacking');
         currentAttacker = 'monster';
         statusContainer.innerText = `Current attacker: ${currentAttacker}`;
         [monster, player] = singleCombatRound(monster, player)
         // change players life in UI
+        const playerLife = document.getElementById('playerLife');
+        playerLife.innerText = `Life: ${player.life}`
     }
 }
 
@@ -97,10 +102,15 @@ function initialStats() {
         const p1 = document.createElement('p');
         const p2 = document.createElement('p');
         const p3 = document.createElement('p');
-        container.append(p1, p2, p3);
         p1.innerText = `Name: ${el.name}`;
         p2.innerText = `Life: ${el.life} `;
+        if ('xpReward' in el) {
+            p2.setAttribute('id', 'monsterLife');
+        } else {
+            p2.setAttribute('id', 'playerLife');
+        }
         p3.innerText = `${el.potions ? `Potions: ${el.potions}` : ''}`;
+        container.append(p1, p2, p3);
         statsContainer.append(container);
     });
 }
