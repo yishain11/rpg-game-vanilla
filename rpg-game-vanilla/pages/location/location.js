@@ -10,6 +10,8 @@ const main = document.getElementsByTagName('main')[0];
 const header = document.getElementsByTagName('header')[0];
 const actions = document.getElementById('actions');
 
+localStorage.setItem('currentLocation', locationName)
+
 updateTitles();
 header.append(genHeader());
 
@@ -55,7 +57,7 @@ function genCard(contract) {
     card.classList.add('card');
     card.addEventListener('click', () => {
         localStorage.setItem('currentMonster', JSON.stringify(contract.monster));
-        window.location = '/pages/combat.html';
+        window.location = '/pages/combat/combat.html';
     });
     return card;
 }

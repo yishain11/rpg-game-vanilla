@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+
+}
+
+body {
+    background-image: url('/assets/combat/desert.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    color: rgb(141, 0, 0);
+    font-size: 5vh;
+    background-color: red;
+    height: 20%;
+}
+
+main {
+    width: 60%;
+    height: 60%;
+    background-color: yellow;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    grid-template-areas:
+        "monsterImg playerImg"
+        "buttons stats"
+    ;
+}
+
+#log {
+    background-color: red;
+}
+
+#monsterImage {
+    grid-area: monsterImg;
+    background-color: red;
+}
+
+#playerImage {
+    grid-area: playerImg;
+    background-color: green;
+}
+
+#buttons {
+    grid-area: buttons;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#stats {
+    grid-area: stats;
+    background-color: purple;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 5vh;
+}
+
+section#playerImage, section#monsterImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    margin: auto;
+}
