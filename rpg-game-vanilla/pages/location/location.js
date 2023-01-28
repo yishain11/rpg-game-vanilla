@@ -18,11 +18,12 @@ header.append(genHeader());
 let contracts = contractsHandler();
 setActions();
 function createContractCard(contract) {
+    console.log('contract', contract)
     const card = genCard(contract);
     const [title, subTitle] = genTitles(contract);
     const img = styleImg();
-    const [p1, p2, p3] = styleP(contract);
-    card.append(title, subTitle, img, p1, p2, p3);
+    const [p1, p2, p3, p4] = styleP(contract);
+    card.append(title, subTitle, img, p1, p2, p3, p4);
     main.append(card);
 }
 
@@ -38,10 +39,12 @@ function styleP(contract) {
     const p1 = document.createElement('p');
     const p2 = document.createElement('p');
     const p3 = document.createElement('p');
+    const p4 = document.createElement('p');
     p1.innerText = `Gold Reward: ${contract.gold}`;
-    p2.innerText = `XP Reward: ${contract.xp}`;
+    p2.innerText = `XP Reward: ${contract.monster.xpReward}`;
     p3.innerText = `Monster Level: ${contract.level}`;
-    return [p1, p2, p3];
+    p4.innerText = `Monster Life: ${contract.monster.life}`;
+    return [p1, p2, p3, p4];
 }
 
 function genTitles(contract) {

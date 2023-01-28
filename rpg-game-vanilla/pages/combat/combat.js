@@ -32,34 +32,63 @@ function loadCombatPage() {
 function startCombat() {
     currentAttacker = selectStarter(player.dexterity, monster.dexterity);
     statusContainer.innerText = `Current attacker: ${currentAttacker}`;
+    if (currentAttacker === "monster") {
+        monsterAttack();
+    }
 }
 
 function attack() {
     if (isCombat) {
-        console.log('player is attacking');
-        [player, monster] = singleCombatRound(player, monster);
-        if (monster.life <= 0) {
-            statusContainer.innerText = 'Player Won!';
-            player.xp += monster.xpReward;
-            player.gold += monster.goldReward;
-            monster.isAlive = false;
-            // remove monster from contracts
-            const currentLocation = localStorage.getItem('currentLocation');
-            contracts = removeMonsterFromContract(contracts, currentLocation, monster.name);
-            saveContracts(contracts);
-        } else {
-            // change monster life in UI
-            const monsterLife = document.getElementById('monsterLife');
-            monsterLife.innerText = `Life: ${monster.life}`
-        }
-        // after attack - change attacker
-        console.log('monster is attacking');
-        currentAttacker = 'monster';
-        statusContainer.innerText = `Current attacker: ${currentAttacker}`;
-        [monster, player] = singleCombatRound(monster, player)
+        playerAttack();
+        monsterAttack();
+    }
+}
+
+function playerAttack() {
+    console.log('player is attacking');
+    [player, monster] = singleCombatRound(player, monster);
+    if (monster.life <= 0) {
+        isCombat = false;
+        statusContainer.innerText = 'Player Won!';
+        statusContainer.style.color = 'darkblue';
+        statusContainer.style.textDecoration = 'underline';
+        player.xp += monster.xpReward;
+        player.gold += monster.goldReward;
+        monster.isAlive = false;
+        // remove monster from contracts
+        const currentLocation = localStorage.getItem('currentLocation');
+        contracts = removeMonsterFromContract(contracts, currentLocation, monster.name);
+        saveContracts(contracts);
+        console.log('back to location');
+        isCombat = false;
+        setTimeout(() => {
+            window.location = `/pages/location/location.html?location=${currentLocation}`;
+        }, 4000);
+    } else {
+        // change monster life in UI
+        const monsterLife = document.getElementById('monsterLife');
+        monsterLife.innerText = `Life: ${monster.life}`;
+    }
+}
+
+function monsterAttack() {
+    console.log('monster is attacking');
+    currentAttacker = 'monster';
+    statusContainer.innerText = `Current attacker: ${currentAttacker}`;
+    [monster, player] = singleCombatRound(monster, player);
+    if (player.life <= 0) {
+        console.log('player is dead');
+        isCombat = false;
+        statusContainer.innerText = 'Player is dead';
+        statusContainer.style.color = 'darkblue';
+        statusContainer.style.textDecoration = 'underline';
+        setTimeout(() => {
+            window.location = '/';
+        }, 4000);
+    } else {
         // change players life in UI
         const playerLife = document.getElementById('playerLife');
-        playerLife.innerText = `Life: ${player.life}`
+        playerLife.innerText = `Life: ${player.life}`;
     }
 }
 
