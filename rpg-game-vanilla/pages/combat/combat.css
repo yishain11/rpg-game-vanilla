@@ -58,6 +58,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 100%;
 }
 
 #stats {
@@ -78,4 +79,8 @@ section#playerImage, section#monsterImage {
 
 img {
     margin: auto;
+}
+
+button {
+    font-size: 5vh;
 }

@@ -31,7 +31,7 @@ function loadCombatPage() {
 
 function startCombat() {
     currentAttacker = selectStarter(player.dexterity, monster.dexterity);
-    statusContainer.innerText = `Current attacker: ${currentAttacker}`;
+    updateAttackerStatus();
     if (currentAttacker === "monster") {
         monsterAttack();
     }
@@ -44,8 +44,14 @@ function attack() {
     }
 }
 
+function updateAttackerStatus() {
+    statusContainer.innerText = `Current attacker: ${currentAttacker}`;
+
+}
+
 function playerAttack() {
     console.log('player is attacking');
+    updateAttackerStatus();
     [player, monster] = singleCombatRound(player, monster);
     if (monster.life <= 0) {
         isCombat = false;
@@ -73,6 +79,7 @@ function playerAttack() {
 
 function monsterAttack() {
     console.log('monster is attacking');
+    updateAttackerStatus();
     currentAttacker = 'monster';
     statusContainer.innerText = `Current attacker: ${currentAttacker}`;
     [monster, player] = singleCombatRound(monster, player);
